@@ -3,6 +3,9 @@ package hellocucumber;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.Assert.*;
 
@@ -10,8 +13,7 @@ public class Stepdefs {
 
     @Given("I am on the Standard form of translator page on URL {string}")
     public void i_am_on_the_Standard_form_of_translator_page_on_URL(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+
     }
 
     @Then("I should see empty form to input text for translation")
