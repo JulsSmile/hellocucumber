@@ -14,14 +14,11 @@ public class Stepdefs{
 
     @Given("I am on the Standard form of translator page on URL {string}")
     public void i_am_on_the_Standard_form_of_translator_page_on_URL(String BaseURL) {
-//        WebDriver driver;
-//        driver = new ChromeDriver();
-//        WebDriverManager.chromedriver().setup();
-//        driver.manage().window().maximize();
-//        driver.get(BaseURL);
+
         WebDriver driver;
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.get(BaseURL);
     }
 
     @Then("I should see empty form to input text for translation")
