@@ -1,5 +1,6 @@
 package Pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -47,7 +48,10 @@ public class GoogleTranslatorPage{
     public WebElement getResultOfTranslation() {
         return driver.findElement(getResultOfTranslation);
     }
-
+public void isRightURL(){
+    String URL = driver.getCurrentUrl();
+    Assert.assertEquals(URL, "https://translate.google.com/?hl=uk");
+}
     public void addSelectedLangFromEnToUa() {
         selectLanguageToWhichTranslate().click();
         selectEnglishLanguage().click();

@@ -31,7 +31,8 @@ public class Stepdefs{
 
     @Given("the user is on the google translate page")
     public void the_user_is_on_the_google_translate_page() {
-
+        GoogleTranslatorPage googleTranslatorPage = new GoogleTranslatorPage(driver);
+        googleTranslatorPage.isRightURL();
     }
 
     @Given("selected languages from {string} to {string}")
