@@ -2,10 +2,11 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class GoogleTranslatorPage{
 
-    private WebDriver driver;
+    WebDriver driver;
 
     private By selectLanguageFromWhichTranslate = By.xpath("//*[@class = 'sl-more tlid-open-source-language-list']");
     private By selectLanguageToWhichTranslate = By.xpath("//*[@class = 'tl-more tlid-open-target-language-list']");
@@ -13,36 +14,43 @@ public class GoogleTranslatorPage{
     private By selectUkrainianLanguage = By.xpath("//*[@class= 'language_list_item language_list_item_language_name' and text()= 'українська']");
     private By definitionOfTheWord = By.xpath("/html/body/div[2]/div[1]/div[2]/div[2]/div[3]/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[1]");
 
-    private By inputWordToTranslate = By.xpath("//*[@id='source']");
+    private By inputFormToTranslate = By.xpath("//*[@id='source']");
     private By getResultOfTranslation = By.xpath("//*[@class= 'tlid-translation translation']");
 
-
-    public By getSelectLanguageFromWhichTranslate() {
-        return selectLanguageFromWhichTranslate;
+    public GoogleTranslatorPage(WebDriver driver) {
+        this.driver = driver;
     }
 
-    public By getSelectLanguageToWhichTranslate() {
-        return selectLanguageToWhichTranslate;
+    public WebElement inputFormToTranslate() {
+        return driver.findElement(inputFormToTranslate);
     }
 
-    public By getSelectEnglishLanguage() {
-        return selectEnglishLanguage;
+    public void clearInputForm() {
+        inputFormToTranslate().sendKeys("mnkljkjm");
     }
 
-    public By getSelectUkrainianLanguage() {
-        return selectUkrainianLanguage;
+    public WebElement selectLanguageToWhichTranslate() {
+        return driver.findElement(selectLanguageToWhichTranslate);
+    }
+    public WebElement selectLanguageFromWhichTranslate() {
+        return driver.findElement(selectLanguageFromWhichTranslate);
+    }
+    public WebElement selectEnglishLanguage() {
+        return driver.findElement(selectEnglishLanguage);
+    }
+    public WebElement selectUkrainianLanguage() {
+        return driver.findElement(selectUkrainianLanguage);
+    }
+    public WebElement definitionOfTheWord() {
+        return driver.findElement(definitionOfTheWord);
+    }
+    public WebElement getResultOfTranslation() {
+        return driver.findElement(getResultOfTranslation);
     }
 
-    public By getDefinitionOfTheWord() {
-        return definitionOfTheWord;
-    }
-
-    public By getInputWordToTranslate() {
-        return inputWordToTranslate;
-    }
-
-    public By getGetResultOfTranslation() {
-        return getResultOfTranslation;
+    public void addSelectedLangFromEnToUa() {
+        selectLanguageToWhichTranslate().click();
+        selectEnglishLanguage().click();
     }
 
 }
