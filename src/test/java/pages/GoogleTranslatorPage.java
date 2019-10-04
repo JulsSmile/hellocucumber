@@ -79,7 +79,8 @@ public class GoogleTranslatorPage extends Hooks{
     public void inputTranslationWord(String searchWord) {
         inputFormToTranslate().sendKeys(searchWord);
     }
-    public void resultOfTranslation(String translatedWord) {
 
+    public void resultOfTranslation(String translatedWord) {
+        resultOfTranslation(translatedWord);
     }
 }

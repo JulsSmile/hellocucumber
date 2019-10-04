@@ -25,11 +25,11 @@ public class Stepdefs{
         googleTranslatorPage.clearInputForm();
     }
 
-//    @Given("the user is on the google translate page")
-//    public void the_user_is_on_the_google_translate_page() {
-//        GoogleTranslatorPage googleTranslatorPage = new GoogleTranslatorPage(driver);
-//        googleTranslatorPage.isRightURL();
-//    }
+    @Given("the user is on the google translate page")
+    public void the_user_is_on_the_google_translate_page() {
+        GoogleTranslatorPage googleTranslatorPage = new GoogleTranslatorPage(driver);
+        googleTranslatorPage.isRightURL();
+    }
 
     @Given("selected languages from {string} to {string}")
     public void selected_languages_from_to(String langFrom, String langTo) {
@@ -46,7 +46,8 @@ public class Stepdefs{
 
     @Then("they should see the translation {string}")
     public void they_should_see_the_translation(String translatedWord) {
-
+        GoogleTranslatorPage googleTranslatorPage = new GoogleTranslatorPage(driver);
+        googleTranslatorPage.resultOfTranslation(translatedWord);
     }
 //
 //    @Then("number of characters must be {string}.")
