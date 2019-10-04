@@ -1,11 +1,12 @@
-package Pages;
+package pages;
 
+import hellocucumber.Hooks;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class GoogleTranslatorPage{
+public class GoogleTranslatorPage extends Hooks{
 
     WebDriver driver;
 
@@ -13,10 +14,11 @@ public class GoogleTranslatorPage{
     private By selectLanguageToWhichTranslate = By.xpath("//*[@class = 'tl-more tlid-open-target-language-list']");
     private By selectEnglishLanguage = By.xpath("//*[@class= 'language_list_item language_list_item_language_name' and text()= 'англійська']");
     private By selectUkrainianLanguage = By.xpath("//*[@class= 'language_list_item language_list_item_language_name' and text()= 'українська']");
-    private By definitionOfTheWord = By.xpath("/html/body/div[2]/div[1]/div[2]/div[2]/div[3]/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[1]");
-
+    private By definitionOfTheWord = By.xpath("//div[contains(text(),'the tree which bears apples.')]");
     private By inputFormToTranslate = By.xpath("//*[@id='source']");
     private By getResultOfTranslation = By.xpath("//*[@class= 'tlid-translation translation']");
+    private By setLangFromWhichToTranslate = By.xpath("//*[@id='sl_list-search-box']");
+    private By setLangToWhichToTranslate = By.xpath("//*[@id='tl_list-search-box']");
 
     public GoogleTranslatorPage(WebDriver driver) {
         this.driver = driver;
@@ -26,35 +28,58 @@ public class GoogleTranslatorPage{
         return driver.findElement(inputFormToTranslate);
     }
 
-    public void clearInputForm() {
-        inputFormToTranslate().sendKeys("mnkljkjm");
-    }
-
     public WebElement selectLanguageToWhichTranslate() {
         return driver.findElement(selectLanguageToWhichTranslate);
     }
+
     public WebElement selectLanguageFromWhichTranslate() {
         return driver.findElement(selectLanguageFromWhichTranslate);
     }
+
     public WebElement selectEnglishLanguage() {
         return driver.findElement(selectEnglishLanguage);
     }
+
     public WebElement selectUkrainianLanguage() {
         return driver.findElement(selectUkrainianLanguage);
     }
+
     public WebElement definitionOfTheWord() {
         return driver.findElement(definitionOfTheWord);
     }
+
     public WebElement getResultOfTranslation() {
         return driver.findElement(getResultOfTranslation);
     }
-public void isRightURL(){
-    String URL = driver.getCurrentUrl();
-    Assert.assertEquals(URL, "https://translate.google.com/?hl=uk");
-}
-    public void addSelectedLangFromEnToUa() {
-        selectLanguageToWhichTranslate().click();
-        selectEnglishLanguage().click();
+
+    public WebElement setLangToWhichToTranslate() {
+        return driver.findElement(setLangToWhichToTranslate);
     }
 
+    public WebElement setLangFromWhichToTranslate() {
+        return driver.findElement(setLangFromWhichToTranslate);
+    }
+
+    public void isRightURL() {
+        String URL = driver.getCurrentUrl();
+        Assert.assertEquals(URL, "https://translate.google.com");
+    }
+
+    public void clearInputForm() {
+        inputFormToTranslate().clear();
+    }
+
+    public void addSelectedLangFromEnToUa(String langFrom, String langTo) {
+        selectLanguageToWhichTranslate().click();
+        setLangFromWhichToTranslate().sendKeys(langFrom);
+        selectLanguageFromWhichTranslate().click();
+        setLangToWhichToTranslate().sendKeys(langTo);
+    }
+
+    public void inputTranslationWord(String searchWord) {
+        inputFormToTranslate().sendKeys(searchWord);
+    }
+    public void resultOfTranslation(String translatedWord) {
+
+    }
 }
