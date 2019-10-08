@@ -1,47 +1,34 @@
 package pages;
 
-import hellocucumber.Hooks;
-import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
-public class GoogleTranslatorPage extends Hooks{
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
-    WebDriver driver;
+public class GoogleTranslatorPage extends DriverAbstract{
 
-    private By selectLanguageFromWhichTranslate = By.xpath("//*[@class = 'sl-more tlid-open-source-language-list']");
-    private By selectLanguageToWhichTranslate = By.xpath("//*[@class = 'tl-more tlid-open-target-language-list']");
-    private By selectEnglishLanguage = By.xpath("//*[@class= 'language_list_item language_list_item_language_name' and text()= 'англійська']");
-    private By selectUkrainianLanguage = By.xpath("//*[@class= 'language_list_item language_list_item_language_name' and text()= 'українська']");
+    private String BaseURL = "https://translate.google.com/?hl=ru";
+
+    private By openDropDovnMenyFromLang = By.cssSelector(".sl-wrap [aria-label]");
+    private By openDropDovnMenyToLang = By.cssSelector(".tl-wrap [aria-label]");
     private By definitionOfTheWord = By.xpath("//div[contains(text(),'the tree which bears apples.')]");
     private By inputFormToTranslate = By.xpath("//*[@id='source']");
     private By getResultOfTranslation = By.xpath("//*[@class= 'tlid-translation translation']");
     private By setLangFromWhichToTranslate = By.xpath("//*[@id='sl_list-search-box']");
     private By setLangToWhichToTranslate = By.xpath("//*[@id='tl_list-search-box']");
 
-    public GoogleTranslatorPage(WebDriver driver) {
-        this.driver = driver;
-    }
-
     public WebElement inputFormToTranslate() {
         return driver.findElement(inputFormToTranslate);
     }
 
-    public WebElement selectLanguageToWhichTranslate() {
-        return driver.findElement(selectLanguageToWhichTranslate);
+    public WebElement openDropDovmMenyFromLang() {
+        return driver.findElement(openDropDovnMenyFromLang);
     }
 
-    public WebElement selectLanguageFromWhichTranslate() {
-        return driver.findElement(selectLanguageFromWhichTranslate);
-    }
-
-    public WebElement selectEnglishLanguage() {
-        return driver.findElement(selectEnglishLanguage);
-    }
-
-    public WebElement selectUkrainianLanguage() {
-        return driver.findElement(selectUkrainianLanguage);
+    public WebElement openDropDovnMenyToLang() {
+        return driver.findElement(openDropDovnMenyToLang);
     }
 
     public WebElement definitionOfTheWord() {
@@ -60,9 +47,8 @@ public class GoogleTranslatorPage extends Hooks{
         return driver.findElement(setLangFromWhichToTranslate);
     }
 
-    public void isRightURL() {
-        String URL = driver.getCurrentUrl();
-        Assert.assertEquals(URL, "https://translate.google.com");
+    public void goToBasePage() {
+        driver.get(BaseURL);
     }
 
     public void clearInputForm() {
@@ -70,10 +56,12 @@ public class GoogleTranslatorPage extends Hooks{
     }
 
     public void addSelectedLangFromEnToUa(String langFrom, String langTo) {
-        selectLanguageToWhichTranslate().click();
+        openDropDovmMenyFromLang().click();
         setLangFromWhichToTranslate().sendKeys(langFrom);
-        selectLanguageFromWhichTranslate().click();
+        setLangFromWhichToTranslate().sendKeys(Keys.ENTER);
+        openDropDovnMenyToLang().click();
         setLangToWhichToTranslate().sendKeys(langTo);
+        setLangToWhichToTranslate().sendKeys(Keys.ENTER);
     }
 
     public void inputTranslationWord(String searchWord) {
@@ -81,6 +69,15 @@ public class GoogleTranslatorPage extends Hooks{
     }
 
     public void resultOfTranslation(String translatedWord) {
-        resultOfTranslation(translatedWord);
+        assertTrue("Translated word is " + translatedWord, getResultOfTranslation().getText().equalsIgnoreCase(translatedWord));
+    }
+
+    public void lengthOfWord(int wordToTranslate) {
+        int lengthOfWord = inputFormToTranslate().getText().length();
+        assertEquals("resultLength is " + wordToTranslate,  wordToTranslate, lengthOfWord);
+    }
+    public void visibleDefinition(String string) {
+assertEquals(string, definitionOfTheWord().getText());
+        definitionOfTheWord().getText().equalsIgnoreCase(string);
     }
 }

@@ -11,7 +11,7 @@ public class ConfigProperties {
     private ConfigProperties() {}
     static {
         try {
-            fileInputStream = new FileInputStream("src/main/resources/config.properties");
+            fileInputStream = new FileInputStream("src/test/resources/config.properties");
             PROPERTIES = new Properties();
             PROPERTIES.load(fileInputStream);
         } catch (IOException e) {

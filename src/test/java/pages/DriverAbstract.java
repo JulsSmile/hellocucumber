@@ -5,10 +5,11 @@ import utils.DriverManager;
 
 public class DriverAbstract{
 
-        protected WebDriver driver = DriverManager.getDriver();
+        static WebDriver driver = DriverManager.getDriver();
 
         public void closeDriver(){
             if(driver!=null)
                 driver.quit();
+            driver = null;
         }
     }
