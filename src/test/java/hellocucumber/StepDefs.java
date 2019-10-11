@@ -42,7 +42,7 @@ public class StepDefs extends Hooks{
     @Then("number of characters must be {int}.")
     public void number_of_characters_must_be(int resultLength) {
         googleTranslatorPage.lengthOfWord(resultLength);
-    }
+            }
 
     @Then("they should see the definition {string}")
     public void they_should_see_the_definition(String string) {

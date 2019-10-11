@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -11,24 +12,28 @@ public class GoogleTranslatorPage extends DriverAbstract{
 
     private String BaseURL = "https://translate.google.com/?hl=ru";
 
-    private By openDropDovnMenyFromLang = By.cssSelector(".sl-wrap [aria-label]");
-    private By openDropDovnMenyToLang = By.cssSelector(".tl-wrap [aria-label]");
+    private By openLeftSelectLangMenu = By.cssSelector(".sl-wrap [aria-label]");
+    private By openRightSelectLangMenu = By.cssSelector(".tl-wrap [aria-label]");
     private By definitionOfTheWord = By.xpath("//div[contains(text(),'the tree which bears apples.')]");
     private By inputFormToTranslate = By.xpath("//*[@id='source']");
     private By getResultOfTranslation = By.xpath("//*[@class= 'tlid-translation translation']");
     private By setLangFromWhichToTranslate = By.xpath("//*[@id='sl_list-search-box']");
     private By setLangToWhichToTranslate = By.xpath("//*[@id='tl_list-search-box']");
+    private By setTheWOrdToTranslate = By.cssSelector("textarea#source");
 
     public WebElement inputFormToTranslate() {
         return driver.findElement(inputFormToTranslate);
     }
+    public WebElement setTheWOrdToTranslate() {
+        return driver.findElement(setTheWOrdToTranslate);
+    }
 
     public WebElement openDropDovmMenyFromLang() {
-        return driver.findElement(openDropDovnMenyFromLang);
+        return driver.findElement(openLeftSelectLangMenu);
     }
 
     public WebElement openDropDovnMenyToLang() {
-        return driver.findElement(openDropDovnMenyToLang);
+        return driver.findElement(openRightSelectLangMenu);
     }
 
     public WebElement definitionOfTheWord() {
@@ -46,6 +51,7 @@ public class GoogleTranslatorPage extends DriverAbstract{
     public WebElement setLangFromWhichToTranslate() {
         return driver.findElement(setLangFromWhichToTranslate);
     }
+
 
     public void goToBasePage() {
         driver.get(BaseURL);
@@ -66,6 +72,7 @@ public class GoogleTranslatorPage extends DriverAbstract{
 
     public void inputTranslationWord(String searchWord) {
         inputFormToTranslate().sendKeys(searchWord);
+                inputFormToTranslate().sendKeys(Keys.ENTER);
     }
 
     public void resultOfTranslation(String translatedWord) {
@@ -73,11 +80,12 @@ public class GoogleTranslatorPage extends DriverAbstract{
     }
 
     public void lengthOfWord(int wordToTranslate) {
-        int lengthOfWord = inputFormToTranslate().getText().length();
-        assertEquals("resultLength is " + wordToTranslate,  wordToTranslate, lengthOfWord);
+        int lengthOfWord = setTheWOrdToTranslate().getText().length();
+        assertTrue("resultLength is " + lengthOfWord, wordToTranslate == lengthOfWord);
     }
+
     public void visibleDefinition(String string) {
-assertEquals(string, definitionOfTheWord().getText());
+        assertEquals(string, definitionOfTheWord().getText());
         definitionOfTheWord().getText().equalsIgnoreCase(string);
     }
 }
