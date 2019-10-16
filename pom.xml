@@ -112,6 +112,8 @@
                         <property>
                             <name>listener</name>
                             <value>io.qameta.allure.junit4.AllureJunit4</value>
+                            <name>allure.results.directory</name>
+                            <value>C:\Program Files (x86)\Jenkins\workspace\Cucumber\target\allure-results</value>
                         </property>
                     </properties>
                     <systemProperties>
@@ -131,4 +133,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
