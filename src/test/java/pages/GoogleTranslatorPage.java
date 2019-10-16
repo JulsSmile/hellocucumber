@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Allure;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -65,6 +66,7 @@ public class GoogleTranslatorPage extends DriverAbstract{
         openDropDovmMenyFromLang().click();
         setLangFromWhichToTranslate().sendKeys(langFrom);
         setLangFromWhichToTranslate().sendKeys(Keys.ENTER);
+        Allure.addAttachment("typing language", langFrom + " language was entered");
         openDropDovnMenyToLang().click();
         setLangToWhichToTranslate().sendKeys(langTo);
         setLangToWhichToTranslate().sendKeys(Keys.ENTER);
@@ -81,7 +83,7 @@ public class GoogleTranslatorPage extends DriverAbstract{
 
     public void lengthOfWord(int wordToTranslate) {
         int lengthOfWord = setTheWOrdToTranslate().getText().length();
-        assertTrue("resultLength is " + lengthOfWord, wordToTranslate == lengthOfWord);
+                assertTrue("resultLength is " + lengthOfWord, wordToTranslate == lengthOfWord);
     }
 
     public void visibleDefinition(String string) {
