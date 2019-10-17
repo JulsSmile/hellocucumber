@@ -55,12 +55,12 @@
             <version>RELEASE</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.0.0</version>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.testng</groupId>-->
+<!--            <artifactId>testng</artifactId>-->
+<!--            <version>7.0.0</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-junit4 -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
@@ -114,15 +114,11 @@
                             <name>listener</name>
                             <value>io.qameta.allure.junit4.AllureJunit4</value>
                             <name>allure.results.directory</name>
+                            <value>${project.build.directory}/allure-results</value>
 <!--                            <value>C:\Program Files (x86)\Jenkins\workspace\Cucumber\target\allure-results</value>-->
                         </property>
                     </properties>
-                    <systemProperties>
-                        <property>
-                            <name>allure.results.directory</name>
-                            <value>${project.build.directory}/allure-results</value>
-                        </property>
-                    </systemProperties>
+
                 </configuration>
                 <dependencies>
                     <dependency>
