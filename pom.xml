@@ -116,8 +116,8 @@
                             <name>listener</name>
                             <value>io.qameta.allure.junit4.AllureJunit4</value>
                             <name>allure.results.directory</name>
-                            <value>${project.build.directory}/allure-results</value>
-                            <!--                            <value>C:\Program Files (x86)\Jenkins\workspace\Cucumber\target\allure-results</value>-->
+<!--                            <value>${project.build.directory}/allure-results</value>-->
+                            <value>C:\Program Files (x86)\Jenkins\workspace\Cucumber\target\allure-results</value>
                         </property>
                     </properties>
 
