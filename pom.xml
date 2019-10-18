@@ -68,6 +68,11 @@
             <version>2.13.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -116,19 +121,11 @@
                             <name>listener</name>
                             <value>io.qameta.allure.junit4.AllureJunit4</value>
                             <name>allure.results.directory</name>
-<!--                            <value>${project.build.directory}/allure-results</value>-->
+                            <!--                            <value>${project.build.directory}/allure-results</value>-->
                             <value>C:\Program Files (x86)\Jenkins\workspace\Cucumber\target\allure-results</value>
                         </property>
                     </properties>
-
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
