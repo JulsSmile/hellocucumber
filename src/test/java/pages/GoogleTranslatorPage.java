@@ -1,9 +1,10 @@
 package pages;
 
 import io.qameta.allure.Allure;
-import org.junit.Test;
+import io.qameta.allure.Attachment;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 
 import static junit.framework.TestCase.assertEquals;
@@ -25,6 +26,7 @@ public class GoogleTranslatorPage extends DriverAbstract{
     public WebElement inputFormToTranslate() {
         return driver.findElement(inputFormToTranslate);
     }
+
     public WebElement setTheWOrdToTranslate() {
         return driver.findElement(setTheWOrdToTranslate);
     }
@@ -56,10 +58,12 @@ public class GoogleTranslatorPage extends DriverAbstract{
 
     public void goToBasePage() {
         driver.get(BaseURL);
+        Allure.addAttachment("browser opened, base url", BaseURL);
     }
 
     public void clearInputForm() {
         inputFormToTranslate().clear();
+
     }
 
     public void addSelectedLangFromEnToUa(String langFrom, String langTo) {
@@ -70,11 +74,11 @@ public class GoogleTranslatorPage extends DriverAbstract{
         openDropDovnMenyToLang().click();
         setLangToWhichToTranslate().sendKeys(langTo);
         setLangToWhichToTranslate().sendKeys(Keys.ENTER);
-    }
+            }
 
     public void inputTranslationWord(String searchWord) {
         inputFormToTranslate().sendKeys(searchWord);
-                inputFormToTranslate().sendKeys(Keys.ENTER);
+        inputFormToTranslate().sendKeys(Keys.ENTER);
     }
 
     public void resultOfTranslation(String translatedWord) {
@@ -83,11 +87,12 @@ public class GoogleTranslatorPage extends DriverAbstract{
 
     public void lengthOfWord(int wordToTranslate) {
         int lengthOfWord = setTheWOrdToTranslate().getText().length();
-                assertTrue("resultLength is " + lengthOfWord, wordToTranslate == lengthOfWord);
+        assertTrue("resultLength is " + lengthOfWord, wordToTranslate == lengthOfWord);
     }
 
     public void visibleDefinition(String string) {
         assertEquals(string, definitionOfTheWord().getText());
         definitionOfTheWord().getText().equalsIgnoreCase(string);
     }
+
 }
