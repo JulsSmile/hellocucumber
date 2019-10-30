@@ -58,12 +58,11 @@ public class GoogleTranslatorPage extends DriverAbstract{
 
     public void goToBasePage() {
         driver.get(BaseURL);
-        Allure.addAttachment("browser opened, base url", BaseURL);
+        Allure.addAttachment("browser opened", BaseURL);
     }
 
     public void clearInputForm() {
         inputFormToTranslate().clear();
-
     }
 
     public void addSelectedLangFromEnToUa(String langFrom, String langTo) {

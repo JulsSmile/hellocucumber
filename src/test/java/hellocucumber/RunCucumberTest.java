@@ -5,7 +5,11 @@ import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(plugin = {"pretty", "io.qameta.allure.cucumber3jvm.AllureCucumber3Jvm"}, features ={"features"}, tags = {"@wordLength"})
+@CucumberOptions(
+        plugin = "pretty",
+        features = "src/test/resources/features",
+        glue = "src/test/java/hellocucumber/"
+)
 
 public class RunCucumberTest {
 }
