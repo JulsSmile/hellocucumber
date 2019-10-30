@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = "pretty",
         features = "src/test/resources/features",
-        glue = "src/test/java/hellocucumber/"
+        glue = "hellocucumber"
 )
 
 public class RunCucumberTest {
