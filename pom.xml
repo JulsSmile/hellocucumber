@@ -117,7 +117,7 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
-                    <includes>**/Run*Test.class</includes>
+                    <includes>**/Run*Test.java</includes>
                 </configuration>
                 <executions>
                     <execution>
