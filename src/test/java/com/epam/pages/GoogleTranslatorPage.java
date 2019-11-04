@@ -1,4 +1,4 @@
-package pages;
+package com.epam.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -9,7 +9,7 @@ import static junit.framework.TestCase.assertTrue;
 
 public class GoogleTranslatorPage extends DriverAbstract{
 
-    private String BaseURL = "https://translate.google.com/?hl=ru";
+    private static final String BASE_URL = "https://translate.google.com/?hl=ru";
 
     private By openLeftSelectLangMenu = By.cssSelector(".sl-wrap [aria-label]");
     private By openRightSelectLangMenu = By.cssSelector(".tl-wrap [aria-label]");
@@ -54,7 +54,7 @@ public class GoogleTranslatorPage extends DriverAbstract{
 
 
     public void goToBasePage() {
-        driver.get(BaseURL);
+        driver.get(BASE_URL);
     }
 
     public void clearInputForm() {
@@ -81,12 +81,10 @@ public class GoogleTranslatorPage extends DriverAbstract{
 
     public void lengthOfWord(int wordToTranslate) {
         int lengthOfWord = setTheWOrdToTranslate().getText().length();
-        assertTrue("resultLength is " + lengthOfWord, wordToTranslate == lengthOfWord);
+        assertEquals("resultLength is " + lengthOfWord, wordToTranslate, lengthOfWord);
     }
 
     public void visibleDefinition(String string) {
         assertEquals(string, definitionOfTheWord().getText());
-        definitionOfTheWord().getText().equalsIgnoreCase(string);
     }
-
 }
