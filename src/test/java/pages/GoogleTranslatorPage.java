@@ -1,10 +1,7 @@
 package pages;
 
-import io.qameta.allure.Allure;
-import io.qameta.allure.Attachment;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 
 import static junit.framework.TestCase.assertEquals;
@@ -58,7 +55,6 @@ public class GoogleTranslatorPage extends DriverAbstract{
 
     public void goToBasePage() {
         driver.get(BaseURL);
-        Allure.addAttachment("browser opened", BaseURL);
     }
 
     public void clearInputForm() {
@@ -69,11 +65,10 @@ public class GoogleTranslatorPage extends DriverAbstract{
         openDropDovmMenyFromLang().click();
         setLangFromWhichToTranslate().sendKeys(langFrom);
         setLangFromWhichToTranslate().sendKeys(Keys.ENTER);
-        Allure.addAttachment("typing language", langFrom + " language was entered");
         openDropDovnMenyToLang().click();
         setLangToWhichToTranslate().sendKeys(langTo);
         setLangToWhichToTranslate().sendKeys(Keys.ENTER);
-            }
+    }
 
     public void inputTranslationWord(String searchWord) {
         inputFormToTranslate().sendKeys(searchWord);

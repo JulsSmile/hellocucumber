@@ -1,4 +1,4 @@
-package hellocucumber;
+package hicucumber;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = "pretty",
         features = "src/test/resources/features",
-        glue = {"RunCucumberTest.java"}
+        glue = "hellocucumber"
 )
 
 public class RunCucumberTest{

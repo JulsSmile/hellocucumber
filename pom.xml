@@ -53,24 +53,7 @@
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit4</artifactId>
-            <version>${allure-junit4.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber-jvm -->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-cucumber-jvm</artifactId>
-            <version>2.0-BETA6</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-java-commons -->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-java-commons</artifactId>
-            <version>2.13.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+                      <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
@@ -81,55 +64,22 @@
 
     <build>
         <plugins>
-            <!--            <plugin>-->
-            <!--                <groupId>org.apache.maven.plugins</groupId>-->
-            <!--                <artifactId>maven-surefire-plugin</artifactId>-->
-            <!--                <version>${maven-surefire-plugin.version}</version>-->
-            <!--                <configuration>-->
-            <!--                    <testFailureIgnore>false</testFailureIgnore>-->
-            <!--                    <argLine>-->
-            <!--                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"-->
-            <!--                    </argLine>-->
-            <!--                    <properties>-->
-            <!--                        <property>-->
-            <!--                            <name>listener</name>-->
-            <!--                            <value>io.qameta.allure.junit4.AllureJunit4</value>-->
-            <!--                        </property>-->
-            <!--                    </properties>-->
-            <!--                    <systemProperties>-->
-            <!--                        <property>-->
-            <!--                            <name>allure.results.directory</name>-->
-            <!--                            <value>${project.build.directory}/allure-results</value>-->
-            <!--                        </property>-->
-            <!--                    </systemProperties>-->
-            <!--                </configuration>-->
-            <!--                <dependencies>-->
-            <!--                    <dependency>-->
-            <!--                        <groupId>org.aspectj</groupId>-->
-            <!--                        <artifactId>aspectjweaver</artifactId>-->
-            <!--                        <version>${aspectj.version}</version>-->
-            <!--                    </dependency>-->
-            <!--                </dependencies>-->
-            <!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
-                    <includes>
-                        <include>RunCucumber.java</include>
-                    </includes>
                 </configuration>
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>iii</id>-->
-<!--                        <phase>test</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>test</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
+                <executions>
+                    <execution>
+                        <id>iii</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>io.qameta.allure</groupId>

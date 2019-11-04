@@ -1,4 +1,4 @@
-package hellocucumber;
+package hicucumber;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
