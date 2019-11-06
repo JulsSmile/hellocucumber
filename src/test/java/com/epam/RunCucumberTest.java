@@ -1,4 +1,4 @@
-package com.epam.hicucumber;
+package com.epam;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = "pretty",
         features = "src/test/resources/features",
-        glue = "com.epam.hicucumber"
+        glue = {"com.epam.hicucumber"}
 )
 
 public class RunCucumberTest{

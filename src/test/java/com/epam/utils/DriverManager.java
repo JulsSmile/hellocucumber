@@ -15,10 +15,7 @@ public class DriverManager{
     private static WebDriver driver;
     private static final String browserName = ConfigProperties.getTestProperty("browser");
 
-    private DriverManager() {
-    }
-
-    private static void initDriver() {
+        private static void initDriver() {
         if (driver == null) {
             switch (browserName) {
                 case "chrome":

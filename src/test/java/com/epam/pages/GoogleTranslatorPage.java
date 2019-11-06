@@ -20,35 +20,35 @@ public class GoogleTranslatorPage extends DriverAbstract{
     private By setLangToWhichToTranslate = By.xpath("//*[@id='tl_list-search-box']");
     private By setTheWOrdToTranslate = By.cssSelector("textarea#source");
 
-    public WebElement inputFormToTranslate() {
+    private WebElement inputFormToTranslate() {
         return driver.findElement(inputFormToTranslate);
     }
 
-    public WebElement setTheWOrdToTranslate() {
+    private WebElement setTheWOrdToTranslate() {
         return driver.findElement(setTheWOrdToTranslate);
     }
 
-    public WebElement openDropDovmMenyFromLang() {
+    private WebElement openDropDovmMenyFromLang() {
         return driver.findElement(openLeftSelectLangMenu);
     }
 
-    public WebElement openDropDovnMenyToLang() {
+    private WebElement openDropDovnMenyToLang() {
         return driver.findElement(openRightSelectLangMenu);
     }
 
-    public WebElement definitionOfTheWord() {
+    private WebElement definitionOfTheWord() {
         return driver.findElement(definitionOfTheWord);
     }
 
-    public WebElement getResultOfTranslation() {
+    private WebElement getResultOfTranslation() {
         return driver.findElement(getResultOfTranslation);
     }
 
-    public WebElement setLangToWhichToTranslate() {
+    private WebElement setLangToWhichToTranslate() {
         return driver.findElement(setLangToWhichToTranslate);
     }
 
-    public WebElement setLangFromWhichToTranslate() {
+    private WebElement setLangFromWhichToTranslate() {
         return driver.findElement(setLangFromWhichToTranslate);
     }
 

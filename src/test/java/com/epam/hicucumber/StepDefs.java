@@ -1,5 +1,6 @@
 package com.epam.hicucumber;
 
+import com.epam.pages.DriverAbstract;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -9,15 +10,6 @@ public class StepDefs {
 
     private GoogleTranslatorPage googleTranslatorPage = new GoogleTranslatorPage();
 
-    @Given("I am on the Standard form of translator page on URL {string}")
-    public void i_am_on_the_Standard_form_of_translator_page_on_URL(String BaseURL) {
-        googleTranslatorPage.goToBasePage();
-    }
-
-    @Then("I should see empty form to input text for translation")
-    public void i_should_see_empty_form_to_input_text_for_translation() {
-        googleTranslatorPage.clearInputForm();
-    }
 
     @Given("the user is on the google translate page")
     public void the_user_is_on_the_google_translate_page() {
@@ -47,5 +39,7 @@ public class StepDefs {
     @Then("they should see the definition {string}")
     public void they_should_see_the_definition(String string) {
         googleTranslatorPage.visibleDefinition(string);
+//    DriverAbstract.closeDriver();
     }
+
     }
