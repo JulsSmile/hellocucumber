@@ -1,6 +1,5 @@
-package com.epam.hicucumber;
+package com.epam.test;
 
-import com.epam.pages.DriverAbstract;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;

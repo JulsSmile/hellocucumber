@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
-public class GoogleTranslatorPage extends DriverAbstract{
+public class GoogleTranslatorPage extends BasePage{
 
     private static final String BASE_URL = "https://translate.google.com/?hl=ru";
 
@@ -21,51 +21,47 @@ public class GoogleTranslatorPage extends DriverAbstract{
     private By setTheWOrdToTranslate = By.cssSelector("textarea#source");
 
     private WebElement inputFormToTranslate() {
-        return driver.findElement(inputFormToTranslate);
+        return getDriver().findElement(inputFormToTranslate);
     }
 
     private WebElement setTheWOrdToTranslate() {
-        return driver.findElement(setTheWOrdToTranslate);
+        return getDriver().findElement(setTheWOrdToTranslate);
     }
 
-    private WebElement openDropDovmMenyFromLang() {
-        return driver.findElement(openLeftSelectLangMenu);
+    private WebElement openDropDownMendyFromLang() {
+        return getDriver().findElement(openLeftSelectLangMenu);
     }
 
-    private WebElement openDropDovnMenyToLang() {
-        return driver.findElement(openRightSelectLangMenu);
+    private WebElement openDropDownMendyToLang() {
+        return getDriver().findElement(openRightSelectLangMenu);
     }
 
     private WebElement definitionOfTheWord() {
-        return driver.findElement(definitionOfTheWord);
+        return getDriver().findElement(definitionOfTheWord);
     }
 
     private WebElement getResultOfTranslation() {
-        return driver.findElement(getResultOfTranslation);
+        return getDriver().findElement(getResultOfTranslation);
     }
 
     private WebElement setLangToWhichToTranslate() {
-        return driver.findElement(setLangToWhichToTranslate);
+        return getDriver().findElement(setLangToWhichToTranslate);
     }
 
     private WebElement setLangFromWhichToTranslate() {
-        return driver.findElement(setLangFromWhichToTranslate);
+        return getDriver().findElement(setLangFromWhichToTranslate);
     }
 
 
     public void goToBasePage() {
-        driver.get(BASE_URL);
-    }
-
-    public void clearInputForm() {
-        inputFormToTranslate().clear();
+        getDriver().navigate().to(BASE_URL);
     }
 
     public void addSelectedLangFromEnToUa(String langFrom, String langTo) {
-        openDropDovmMenyFromLang().click();
+        openDropDownMendyFromLang().click();
         setLangFromWhichToTranslate().sendKeys(langFrom);
         setLangFromWhichToTranslate().sendKeys(Keys.ENTER);
-        openDropDovnMenyToLang().click();
+        openDropDownMendyToLang().click();
         setLangToWhichToTranslate().sendKeys(langTo);
         setLangToWhichToTranslate().sendKeys(Keys.ENTER);
     }

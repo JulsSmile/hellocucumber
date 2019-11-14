@@ -11,11 +11,10 @@ import org.openqa.selenium.opera.OperaDriver;
 import java.util.concurrent.TimeUnit;
 
 public class DriverManager{
-
     private static WebDriver driver;
     private static final String browserName = ConfigProperties.getTestProperty("browser");
 
-        private static void initDriver() {
+    private static void initDriver() {
         if (driver == null) {
             switch (browserName) {
                 case "chrome":
@@ -39,7 +38,7 @@ public class DriverManager{
                             String.format("Behaviour for browser name '%s' is not defined", browserName));
             }
         }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
@@ -48,5 +47,12 @@ public class DriverManager{
             initDriver();
         }
         return driver;
+    }
+
+    public static void closeDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 }

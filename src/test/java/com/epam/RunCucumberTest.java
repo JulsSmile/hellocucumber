@@ -6,9 +6,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = "pretty",
-        features = "src/test/resources/features",
-        glue = {"com.epam.hicucumber"}
+        strict = true,
+        features = "src/test/resources/features/",
+        plugin = {"pretty", "json:target/cucumber.json"},
+        glue = {"com.epam.test"}
 )
 
 public class RunCucumberTest{
